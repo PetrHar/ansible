@@ -1,4 +1,4 @@
-- name: "Create directory cert"
+- name: nginx | create certificates directory
   become: yes
   file:
     path: "{{ item | dirname }}"
@@ -7,7 +7,8 @@
     - "{{ nginx_ssl_certificate }}"
     - "{{ nginx_ssl_certificate_key }}"
 
-- name: "Generace cert"
+# http://serialized.net/2013/04/simply-generating-self-signed-ssl-certs-with-ansible/
+- name: nginx | generate self-signed SSL certificate
   become: yes
   command:
     openssl req -new -nodes -x509 -subj "{{ nginx_ssl_certificate_subject }}" -days {{ nginx_ssl_certificate_days }} -keyout {{ nginx_ssl_certificate_key }} -out {{ nginx_ssl_certificate }} -extensions v3_ca

@@ -4,15 +4,17 @@ vhost_alt_names: "www.test.cz"
 vhost_root: "/var/www/html/"
 vhost_index: index.html
 
+vhost_redirect_http: yes
+vhost_process_http: no
+
+vhost_fastcgi_params: {}
+vhost_fastcgi_pass: unix:/var/run/php-fpm.sock
+
 #SSL
-# Certificate subject
-nginx_ssl_certificate_subject: "/CN={{ vhost_name }}"
+vhost_ssl:
+  nginx_ssl_certificate_subject: "/CN={{ vhost_name }}"
+  nginx_ssl_certificate_days: 365
+  nginx_ssl_certificate: "/etc/nginx/ssl/dr.crt"
+  nginx_ssl_certificate_key: "/etc/nginx/ssl/dr.key"
 
-# Certificate validity (days)
-nginx_ssl_certificate_days: 365
-
-# Server path to SSL certificate
-nginx_ssl_certificate: /etc/nginx/ssl/{{ vhost_name }}.crt
-
-# Server path to SSL certificate key
-nginx_ssl_certificate_key: /etc/nginx/ssl/{{ vhost_name }.key
+vhost_ssl: {}

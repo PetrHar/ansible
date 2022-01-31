@@ -1,3 +1,5 @@
 - name: "Copy vhost"
   import_tasks: "vhost.yml"
 
+- name: "SSL certificate"
+  import_tasks: "certificate.yml"
