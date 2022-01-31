@@ -1,0 +1,4 @@
+vhost_name: "test.cz"
+vhost_alt_names: "www.test.cz"
+vhost_root: "/var/www/html/"
+vhost_index: index.html

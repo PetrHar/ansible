@@ -1,0 +1,5 @@
+- name: "reload nginx"
+  service:
+    name: "systemctl reload nginx"
+    state: "reloaded"
+

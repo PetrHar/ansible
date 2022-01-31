@@ -1,0 +1,12 @@
+server {
+    listen *:80;
+    server_name     {{ vhost_name }} {{ vhost_alt_names }};
+    root            {{ vhost_root }};
+    index           {{ vhost_index }};
+    access_log      /var/log/nginx/{{ vhost_name }}-access.log;
+    error_log       /var/log/nginx/{{ vhost_name }}-error.log;
+
+    location / {
+        try_files $uri $uri/ {{ vhost_index }};
+    }
+}
