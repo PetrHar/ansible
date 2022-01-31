@@ -1,4 +1,18 @@
+#VHOST
 vhost_name: "test.cz"
 vhost_alt_names: "www.test.cz"
 vhost_root: "/var/www/html/"
 vhost_index: index.html
+
+#SSL
+# Certificate subject
+nginx_ssl_certificate_subject: "/CN={{ vhost_name }}"
+
+# Certificate validity (days)
+nginx_ssl_certificate_days: 365
+
+# Server path to SSL certificate
+nginx_ssl_certificate: /etc/nginx/ssl/{{ vhost_name }}.crt
+
+# Server path to SSL certificate key
+nginx_ssl_certificate_key: /etc/nginx/ssl/{{ vhost_name }.key
